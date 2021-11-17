@@ -1,3 +1,11 @@
-FROM golang:1.17.3-alpine3.14 AS base
+FROM golang:alpine AS builder
 
-ENTRYPOINT [ "entrypoint.sh" ]
+WORKDIR /app
+COPY hello.go .
+RUN go build hello.go
+
+FROM scratch
+
+COPY --from=builder /app/hello /app/hello
+
+CMD ["/app/hello"]
