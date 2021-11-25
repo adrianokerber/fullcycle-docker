@@ -1,7 +1,7 @@
 # fullcycle-docker
 Tasks from the course Full Cycle 2.0 on Docker module
 
-## Build Go app using multistage docker
+## 1. Build Go app using multistage docker
 
 A simple multistage dockerfile to build an app in Go lang.
 
@@ -26,7 +26,7 @@ docker push adrianokerber/codeeducation
 
 [Imagem adrianokerber/codeeducation no DockerHub](https://hub.docker.com/repository/docker/adrianokerber/codeeducation)
 
-## Build your development environment using docker-compose
+## 2. Build your development environment using docker-compose
 
 Initialize all containers
 ```bash
@@ -40,9 +40,10 @@ Shutdown all containers
 ```bash
 docker-compose down
 ```
-Tip: use `docker-compose` or `docker compose` without dash.
+> Tip: use `docker-compose` or `docker compose` without dash.
 
-Access aplication on browser using `localhost:8080` to acess via Nginx (Reverse proxy) or `localhost:3000` for direct connection to node app container.
+Access the aplication with the browser using `localhost:8080` to acess via Nginx (Reverse proxy) or `localhost:3000` for direct connection to node app container.
+The application has two routes: `/` and `/name/:yourName` where the `yourName` parameter is the name for a new register on the DB.
 
 ### Docker command tips
 
@@ -62,11 +63,12 @@ docker rm $(docker ps -aq) -f
 ```
 
 Interact with container using Bash (Note: <container_name> is the name of your target container)
-```
+```bash
 docker exec -it <container_name> bash
 ```
+
 Other useful commands:
-```
+```bash
 # List running containers
 docker ps
 
