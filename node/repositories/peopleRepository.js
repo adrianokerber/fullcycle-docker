@@ -7,6 +7,16 @@ module.exports = function () {
         database: 'nodedb'
     }
 
+    this.init = function () {
+        const createTableSql = `CREATE TABLE if not exists people (
+            id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            name varchar(255) DEFAULT NULL
+        )`;
+        let connection = mysql.createConnection(config);
+        connection.query(createTableSql);
+        connection.end();
+    }
+
     this.addPerson = function (personName) {
         let connection = mysql.createConnection(config);
         let sql = `INSERT INTO people(name) values('${personName}')`;

@@ -5,6 +5,7 @@ const peopleRepository = require('./repositories/peopleRepository')
 
 // Routes
 const repository = new peopleRepository();
+repository.init();
 
 app.get('/', (req, res) => {
     // Adding a person to DB
@@ -26,6 +27,13 @@ app.get('/', (req, res) => {
             ${peopleList}
         `)
     });
+})
+
+app.get('/name/:name', (req, res) => {
+    const { name } = req.params;
+    repository.addPerson(name);
+
+    res.send(`<h1>Nome cadastrado: ${name}</h1>`)
 })
 
 app.listen(port, () => {

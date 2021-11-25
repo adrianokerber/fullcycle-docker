@@ -24,7 +24,7 @@ services:
       - nginx-network
     volumes:
       - ./node:/usr/src/app
-      - /usr/src/app/node_modules # Volume anônimo
+      - /usr/src/app/node_modules # Anonym volume to keep node_modules installed on container
     tty: true
     ports:
       - "3000:3000"
@@ -44,6 +44,8 @@ services:
       - MYSQL_ROOT_PASSWORD=root
     networks:
       - node-network
+    ports:
+      - "3306:3306"
 
 networks:
   node-network:

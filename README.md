@@ -1,5 +1,5 @@
 # fullcycle-docker
-Exercícios de Docker do curso FullCycle
+Tasks from the course Full Cycle 2.0 on Docker module
 
 ## Build Go app using multistage docker
 
@@ -8,38 +8,41 @@ A simple multistage dockerfile to build an app in Go lang.
 ### Useful commands for build with Docker
 
 Useful commands:
-```
-// Buildar imagem novamente
+```bash
+# Build image
 docker build -t adrianokerber/codeeducation go
 
-// Build vendo logs de cada camada, no caso de usar um RUN ls ou algo do tipo
+# Build image seeing all logs (ex: using 'RUN ls' or similar commands)
 docker build -t adrianokerber/codeeducation go --progress=plain --no-cache
 
-// Rodar container
+# Run container
 docker run adrianokerber/codeeducation
 
-// Publicar container
+# Publish container
 docker push adrianokerber/codeeducation
 ```
 
-## Imagem no DockerHub
+### DockerHub image
 
 [Imagem adrianokerber/codeeducation no DockerHub](https://hub.docker.com/repository/docker/adrianokerber/codeeducation)
 
-### Build your development environment using docker-compose
+## Build your development environment using docker-compose
 
 Initialize all containers
 ```bash
 docker-compose up -d
 ```
-Shutdown all containers
-```bash
-docker-compose down
-```
 Initialize and build all containers
 ```bash
 docker-compose up -d --build
 ```
+Shutdown all containers
+```bash
+docker-compose down
+```
+Tip: use `docker-compose` or `docker compose` without dash.
+
+Access aplication on browser using `localhost:8080` to acess via Nginx (Reverse proxy) or `localhost:3000` for direct connection to node app container.
 
 ### Docker command tips
 
@@ -79,17 +82,20 @@ docker rmi <image_id>
 
 ### MySQL commands to manage database for dev
 
-```bash
-# Enter bash of container
+```sql
+-- Enter bash of container
 docker exec -it db bash
 
-# On MySQL container run this to access and complete password as "root"
+-- On MySQL container run this to access and complete password as "root"
 mysql -uroot -p
 
-# Select database
+-- Select database
 use nodedb;
 
-# Select registers from table people
+-- Create table
+create table people
+
+-- Select registers from table people
 select * from people;
 ```
 
